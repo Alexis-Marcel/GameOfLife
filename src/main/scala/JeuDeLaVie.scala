@@ -104,5 +104,25 @@ object JeuDeLaVie {
     })
   }
   
+  def survivantes(g:Grille): Grille = {
+    def aux(grille: Grille):Grille = grille match {
+      case t::q => {
+        val (l, c) = t
+        //print("(" + l +"," +c +") :" )
+        val nb = nbVivanteParmiVoisines(l, c, g)
+        //print(nb + " dans g : " + g.toString() + " \n" )
+        if ( 2 <= nb && nb <= 3) t::aux(q)
+        else aux(q)
+      }
+      case Nil => Nil
+    }
+    aux(g)
+  }
+
+  /*
+   * Question 5
+   */
+  
+
 
 }

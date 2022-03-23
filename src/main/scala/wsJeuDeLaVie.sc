@@ -11,6 +11,9 @@ val liste = List("XX ", " XX", " X ");
 
 nbVivanteParmiVoisines(0, 1, l2)
 
+survivantes(l2)
+survivantes(chainesToGrille(l))
+survivantes(chainesToGrille(liste))
 
 
 
