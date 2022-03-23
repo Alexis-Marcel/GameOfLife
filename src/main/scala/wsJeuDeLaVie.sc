@@ -8,12 +8,10 @@ import JeuDeLaVie._;
 
 
 
+voisines8( -6 , -1)
 
-
-
-
-
-
+voisines8( 2 , 4)
+voisines8( 2 , -1)
 
 
 
