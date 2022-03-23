@@ -83,7 +83,7 @@ object JeuDeLaVie {
    * Question 3
    */
   def voisines8(l:Int, c:Int):List[(Int, Int)] = {
-    List((l-1, c-1),(l-1, c), (l-1, c+1), (l, c-1), (l, c),(l, c+1), (l+1, c-1), (l+1, c), (l+1, c+1))
+    List((l-1, c-1),(l-1, c), (l-1, c+1), (l, c-1),(l, c+1), (l+1, c-1), (l+1, c), (l+1, c+1))
   }
 
 
