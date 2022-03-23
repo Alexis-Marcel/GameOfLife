@@ -86,5 +86,23 @@ object JeuDeLaVie {
     List((l-1, c-1),(l-1, c), (l-1, c+1), (l, c-1),(l, c+1), (l+1, c-1), (l+1, c), (l+1, c+1))
   }
 
+  /*
+   * Question 4
+   */
+  def nbVivanteParmiVoisines(l:Int, c:Int, g:Grille):Int={
+    val voisines = voisines8(l, c)
+    (g foldLeft 0)((acc, e)=> {
+      //nbElement a 0 ou 1
+      val nbElement = (voisines foldLeft 0)((accV, eV)=> {
+        val (lv, cv) = eV
+        val (le, ce) = e
+        if (le == lv && ce == cv) accV +1
+        else accV
+      })
+      assert(nbElement <= 1, "Doublons dans une liste")
+      acc + nbElement
+    })
+  }
+  
 
 }
