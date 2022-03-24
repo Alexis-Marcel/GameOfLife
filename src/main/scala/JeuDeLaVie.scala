@@ -122,6 +122,34 @@ object JeuDeLaVie {
   /*
    * Question 5
    */
+
+  /**
+   * Si la cellule n'est pas dans g alors true sinon false
+   */
+  def estMorte(cellule:(Int,Int),g:Grille):Boolean = {
+    val (l,c) = cellule
+    def aux(grille:Grille):Boolean = grille match {
+      case t::q => {
+        val (lv,cv) = t
+        if(lv==l && cv ==c) false
+        else aux(q)
+      }
+      case Nil => true
+    }
+    aux(g)
+
+  }
+
+  def candidates(g:Grille):Grille = {
+    def aux(grille: Grille):Grille = grille match {
+      case t::q => {
+        val (l, c) = t
+        voisines8(l,c).filter(c => estMorte(c,grille))++aux(q)
+      }
+      case Nil => Nil
+    }
+    aux(g)
+  }
   
 
 
