@@ -169,5 +169,28 @@ object JeuDeLaVie {
     retirerDoublons( aux(candidates(g)) );
   }
 
+  /*
+   * Question 7
+   */
+  def jeuDeLaVie(init:Grille, nb:Int):Unit = {
+    def aux(i:Int, g :Grille):Unit = {
+      val newGrille = retirerDoublons(naissances(g) ++ survivantes(g))
+
+      //debuggage a retirer plus tard
+      print("------------------- " + i + "/" + nb + "-------------------\n")
+      print("Depart : " + g +"\n")
+      afficherGrille(g)
+      print("Naissance :" + naissances(g) +" \n")
+      afficherGrille(naissances(g))
+      print("Survivantes : " + survivantes(g) +" \n")
+      afficherGrille(survivantes(g))
+      print("Total :" + newGrille +" \n")
+
+
+      afficherGrille(newGrille)
+      if (i < nb) aux(i+1, newGrille)
+    }
+    aux(1, init)
+  }
 
 }

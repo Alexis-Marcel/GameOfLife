@@ -6,7 +6,7 @@ val liste = List("XX ", " XX", " X ");
 
 
 
-
+jeuDeLaVie(l2, 12)
 
 
 l2
