@@ -8,10 +8,17 @@ val liste = List("XX ", " XX", " X ");
 
 
 
-
 l2
+
 candidates(l2)
 naissances(l2)
+
+nbVivanteParmiVoisines(0, 1, l2)
+
+survivantes(l2)
+survivantes(chainesToGrille(l))
+survivantes(chainesToGrille(liste))
+
 
 afficherGrille(l2 )
 afficherGrille(candidates(l2))

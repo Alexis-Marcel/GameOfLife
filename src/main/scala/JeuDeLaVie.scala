@@ -136,6 +136,7 @@ object JeuDeLaVie {
         if(lv==l && cv ==c) false
         else aux(q)
       }
+
       case Nil => true
     }
     aux(g)
@@ -146,12 +147,29 @@ object JeuDeLaVie {
     def aux(grille: Grille):Grille = grille match {
       case t::q => {
         val (l, c) = t
-        voisines8(l,c).filter(c => estMorte(c,grille))++aux(q)
+        concatener(voisines8(l,c).filter(cel => estMorte(cel,g)),aux(q))
       }
       case Nil => Nil
     }
     aux(g)
   }
+
+  def concatener(g1:Grille,g2:Grille):Grille = {
+    def aux(g1:Grille,g2:Grille):Grille = (g1,g2) match {
+      case (Nil,Nil) => Nil
+      case (t::q,Nil) => t::aux(q,g2)
+      case (Nil,t::q) => t::aux(g1,q)
+      case (t1::q1,t2::q2) => (t1,t2) match {
+        case ((l1, _), (l2, _)) if (l1 < l2) => t1::aux(q1,g2)
+        case ((l1, _), (l2, _)) if (l1 > l2) => t2::aux(g1,q2)
+        case ((_, c1), (_, c2)) if (c1 < c2) => t1::aux(q1,g2)
+        case _ => t2::aux(g1,q2)
+      }
+
+    }
+    aux(g1,g2)
+  }
+
 
   /*
    * Question 6
@@ -168,6 +186,7 @@ object JeuDeLaVie {
     }
     retirerDoublons( aux(candidates(g)) );
   }
+
 
 
 }
