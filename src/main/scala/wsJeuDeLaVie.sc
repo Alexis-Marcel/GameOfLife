@@ -11,9 +11,11 @@ val liste = List("XX ", " XX", " X ");
 
 l2
 candidates(l2)
+naissances(l2)
 
 afficherGrille(l2 )
 afficherGrille(candidates(l2))
+
 
 
 //ici c'est pour les "vieux" tests

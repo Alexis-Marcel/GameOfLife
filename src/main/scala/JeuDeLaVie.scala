@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 object JeuDeLaVie {
 
   /*
@@ -150,7 +152,22 @@ object JeuDeLaVie {
     }
     aux(g)
   }
-  
+
+  /*
+   * Question 6
+   */
+  def retirerDoublons(g:Grille):Grille = g match {
+    case t::q => if (q.contains(t)) retirerDoublons(q) else t::retirerDoublons(q)
+    case Nil => Nil
+  }
+
+  def naissances(g:Grille):Grille = {
+    def aux(grille:Grille):Grille = grille match {
+      case (l, c)::q => if (nbVivanteParmiVoisines(l, c , g) == 3) (l, c)::aux(q) else aux(q)
+      case Nil => Nil
+    }
+    retirerDoublons( aux(candidates(g)) );
+  }
 
 
 }
