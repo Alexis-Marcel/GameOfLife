@@ -163,9 +163,9 @@ object JeuDeLaVie {
       case (t::q,Nil) => t::aux(q,g2)
       case (Nil,t::q) => t::aux(g1,q)
       case (t1::q1,t2::q2) => (t1,t2) match {
-        case ((l1, _), (l2, _)) if (l1 < l2) => t1::aux(q1,g2)
-        case ((l1, _), (l2, _)) if (l1 > l2) => t2::aux(g1,q2)
-        case ((_, c1), (_, c2)) if (c1 < c2) => t1::aux(q1,g2)
+        case ((l1, _), (l2, _)) if l1 < l2 => t1::aux(q1,g2)
+        case ((l1, _), (l2, _)) if l1 > l2 => t2::aux(g1,q2)
+        case ((_, c1), (_, c2)) if c1 < c2 => t1::aux(q1,g2)
         case _ => t2::aux(g1,q2)
       }
 
@@ -225,11 +225,11 @@ object JeuDeLaVie {
   /*
    * Question 9
    */
-  def naitJDLV(nbVoisines:Int):Boolean = (nbVoisines==3)
-  def survitJDLV(nbVoisines:Int):Boolean = (2 == nbVoisines && nbVoisines == 3)
+  def naitJDLV(nbVoisines:Int):Boolean = nbVoisines==3
+  def survitJDLV(nbVoisines:Int):Boolean = 2 == nbVoisines && nbVoisines == 3
 
-  def naitFredkin(nbVoisines:Int):Boolean = (nbVoisines % 2 != 0)
-  def survitFredkin(nbVoisines:Int):Boolean = (nbVoisines % 2 != 0)
+  def naitFredkin(nbVoisines:Int):Boolean = nbVoisines % 2 != 0
+  def survitFredkin(nbVoisines:Int):Boolean = nbVoisines % 2 != 0
 
   /*
    * Question 10
