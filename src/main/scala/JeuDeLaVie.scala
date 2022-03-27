@@ -214,5 +214,12 @@ object JeuDeLaVie {
     aux(1, init)
   }
 
+  /*
+   * Question 8
+   */
+  def voisines4(l:Int, c:Int):List[(Int, Int)] = {
+    List((l-1, c), (l, c-1),(l, c+1), (l+1, c))
+  }
+
 
 }
