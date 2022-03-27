@@ -95,8 +95,7 @@ object JeuDeLaVie {
   /*
    * Question 4
    */
-  def nbVivanteParmiVoisines(l:Int, c:Int, g:Grille):Int={
-    val voisines = voisines8(l, c)
+  def nbVivanteParmiVoisines(g:Grille, voisines:Grille):Int={
     (g foldLeft 0)((acc, e)=> {
       //nbElement a 0 ou 1
       val nbElement = (voisines foldLeft 0)((accV, eV)=> {
@@ -115,7 +114,7 @@ object JeuDeLaVie {
       case t::q => {
         val (l, c) = t
         //print("(" + l +"," +c +") :" )
-        val nb = nbVivanteParmiVoisines(l, c, g)
+        val nb = nbVivanteParmiVoisines(g,  voisines8(l, c))
         //print(nb + " dans g : " + g.toString() + " \n" )
         if ( 2 <= nb && nb <= 3) t::aux(q)
         else aux(q)
@@ -185,7 +184,7 @@ object JeuDeLaVie {
 
   def naissances(g:Grille):Grille = {
     def aux(grille:Grille):Grille = grille match {
-      case (l, c)::q => if (nbVivanteParmiVoisines(l, c , g) == 3) (l, c)::aux(q) else aux(q)
+      case (l, c)::q => if (nbVivanteParmiVoisines(g,voisines8(l, c)) == 3) (l, c)::aux(q) else aux(q)
       case Nil => Nil
     }
     retirerDoublons( aux(candidates(g)) );
