@@ -168,7 +168,8 @@ object JeuDeLaVie {
         case ((l1, _), (l2, _)) if l1 < l2 => t1::aux(q1,g2)
         case ((l1, _), (l2, _)) if l1 > l2 => t2::aux(g1,q2)
         case ((_, c1), (_, c2)) if c1 < c2 => t1::aux(q1,g2)
-        case _ => t2::aux(g1,q2)
+        case ((_, c1), (_, c2)) if c1 > c2 => t2::aux(g1,q2)
+        case _ => t1::aux(q1,q2)
       }
 
     }
@@ -189,7 +190,7 @@ object JeuDeLaVie {
       case (l, c)::q => if (nbVivanteParmiVoisines(g,voisines8(l, c)) == 3) (l, c)::aux(q) else aux(q)
       case Nil => Nil
     }
-    retirerDoublons( aux(candidates(g)) );
+    aux(candidates(g))
   }
 
   /*
@@ -198,7 +199,7 @@ object JeuDeLaVie {
   def jeuDeLaVieQuestion7(init:Grille, nb:Int):Unit = {
     def aux(i:Int, g :Grille):Unit = {
 
-      val newGrille = retirerDoublons(concatener(naissances(g),survivantes(g)))
+      val newGrille = concatener(naissances(g),survivantes(g))
 
       //debuggage a retirer plus tard
       print("------------------- " + i + "/" + nb + "-------------------\n")
@@ -265,7 +266,7 @@ object JeuDeLaVie {
       case (l, c)::q => if (fNait( nbVivanteParmiVoisines(g,fVoisine(l, c)) )) (l, c)::aux(q) else aux(q)
       case Nil => Nil
     }
-    retirerDoublons( aux(candidates(g)) );
+    aux(candidates(g))
   }
 
 
@@ -276,7 +277,7 @@ object JeuDeLaVie {
     @tailrec
     def aux(i:Int, g :Grille):Unit = {
 
-      val newGrille = retirerDoublons(concatener(naissancesG(g, fVoisine, fNait),survivantesG(g, fVoisine, fSurvit)))
+      val newGrille = concatener(naissancesG(g, fVoisine, fNait),survivantesG(g, fVoisine, fSurvit))
 
       //debuggage a retirer plus tard
       print("------------------- " + i + "/" + nb + "-------------------\n")

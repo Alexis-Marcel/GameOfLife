@@ -70,4 +70,42 @@ class TestJeuDeLaVie extends FunSuite {
     intercept[IndexOutOfBoundsException](voisines8( Integer.MAX_VALUE, Integer.MIN_VALUE ))
   }
 
+  /*
+   * Question 4
+  */
+
+  test("survivantes.normal") {
+    val l = List((-1,1),(0,1), (1,2), (2,0), (2,1))
+    val res = survivantes(l)
+    val exp = List((0,1), (1,2), (2,1))
+    assert(res === exp)
+  }
+
+  /*
+   * Question 5
+  */
+
+  test("candidate.normal") {
+    val l = List((-1,1),(0,1), (1,2), (2,0), (2,1))
+    val res = candidates(l)
+
+    val exp = List((-2,0),(-2,1),(-2,2),(-1,0),(-1,2),(0,0),(0,2),(0,3),(1,-1),(1,0),(1,1),(1,3),(2,-1),(2,2),(2,3),(3,-1),(3,0),(3,1),(3,2))
+
+    assert(res === exp)
+  }
+
+  /*
+   * Question 6
+  */
+
+  test("naissances.normal") {
+    val l = List((-1,1),(0,1), (1,2), (2,0), (2,1))
+    val res = naissances(l)
+
+    val exp = List((0,2),(1,0))
+
+    assert(res === exp)
+  }
+
+
 }

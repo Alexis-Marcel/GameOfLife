@@ -5,7 +5,13 @@ val l = List(" XX", "  X", "XXX")
 val l2 = List((-1,1),(0,1), (1,2), (2,0), (2,1))
 
 
+
+afficherGrille(l2)
+afficherGrille(survivantes(l2))
 afficherGrille(naissances(l2))
+
+naissances(l2).length
+candidates(l2).length
 
 val listeCligno = List((0,-1), (0,0), (0,1))
 val clownEn110 = List((-1,-1), (-1,0), (-1 ,1), (0,-1), (0 , 1),(1,-1), (1, 1) )
