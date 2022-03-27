@@ -3,6 +3,10 @@ import JeuDeLaVie._;
 val liste = List("XX ", " XX", " X ");
 val l = List(" XX", "  X", "XXX")
 val l2 = List((-1,1),(0,1), (1,2), (2,0), (2,1))
+
+
+afficherGrille(naissances(l2))
+
 val listeCligno = List((0,-1), (0,0), (0,1))
 val clownEn110 = List((-1,-1), (-1,0), (-1 ,1), (0,-1), (0 , 1),(1,-1), (1, 1) )
 
@@ -46,6 +50,3 @@ naissances(l2)
 clownEn110
 afficherGrille(clownEn110)
 jeuDeLaVie(clownEn110, 110 )
-
-
-
