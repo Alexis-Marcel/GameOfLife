@@ -79,6 +79,7 @@ class TestJeuDeLaVie extends FunSuite {
     val res = survivantes(l)
     val exp = List((0,1), (1,2), (2,1))
     assert(res === exp)
+    //il ne peut pas y avoir plus de survivantes que de cellules vivantes initialement
     assert(res.length <= l.length)
   }
 
@@ -106,6 +107,8 @@ class TestJeuDeLaVie extends FunSuite {
     val exp = List((0,2),(1,0))
 
     assert(res === exp)
+    //il ne peut pas y avoir plus de naissances que de candiates
+    assert(res.length <= candidates(l).length)
   }
 
   /*
