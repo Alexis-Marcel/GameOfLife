@@ -298,4 +298,9 @@ object JeuDeLaVie {
   def jeuDeLaVie(init:Grille, nb:Int):Unit = moteur(init, nb, voisines8, naitJDLV, survitJDLV)
   def automateDeFredkin(init:Grille, nb:Int):Unit = moteur(init, nb, voisines4, naitFredkin, survitFredkin)
 
+  /*
+   * Question 13
+   */
+  def varianteAutomateDeFredkin(init:Grille, nb:Int):Unit = moteur(init, nb, (l, c)=>List((l-1, c-1), (l-1, c+1),(l+1, c-1), (l+1, c+1)), naitFredkin, survitFredkin)
+
 }

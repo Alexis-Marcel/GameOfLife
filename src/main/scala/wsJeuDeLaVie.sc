@@ -12,6 +12,7 @@ val clownEn110 = List((-1,-1), (-1,0), (-1 ,1), (0,-1), (0 , 1),(1,-1), (1, 1) )
 
 
 afficherGrille(voisines4(0,0))
+afficherGrille(((l:Int, c:Int)=>List((l-1, c-1), (l-1, c+1),(l+1, c-1), (l+1, c+1)))(0,0))
 
 //ici c'est pour les "vieux" tests
 
