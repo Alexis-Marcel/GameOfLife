@@ -4,6 +4,7 @@ val l = List(" XX", "  X", "XXX")
 val l2 = List((-1,1),(0,1), (1,2), (2,0), (2,1))
 val liste = List("XX ", " XX", " X ");
 
+afficherGrille(naissances(l2))
 
 
 jeuDeLaVie(l2, 12)
@@ -19,10 +20,8 @@ survivantes(l2)
 survivantes(chainesToGrille(l))
 survivantes(chainesToGrille(liste))
 
-
 afficherGrille(l2 )
 afficherGrille(candidates(l2))
-
 
 
 //ici c'est pour les "vieux" tests

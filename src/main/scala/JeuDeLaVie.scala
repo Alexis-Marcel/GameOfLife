@@ -192,7 +192,7 @@ object JeuDeLaVie {
    */
   def jeuDeLaVie(init:Grille, nb:Int):Unit = {
     def aux(i:Int, g :Grille):Unit = {
-      val newGrille = retirerDoublons(naissances(g) ++ survivantes(g))
+      val newGrille = retirerDoublons(concatener(naissances(g),survivantes(g)))
 
       //debuggage a retirer plus tard
       print("------------------- " + i + "/" + nb + "-------------------\n")
