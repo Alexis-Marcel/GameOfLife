@@ -6,26 +6,8 @@ val l2 = List((-1,1),(0,1), (1,2), (2,0), (2,1))
 val listeCligno = List((0,-1), (0,0), (0,1))
 val clownEn110 = List((-1,-1), (-1,0), (-1 ,1), (0,-1), (0 , 1),(1,-1), (1, 1) )
 
-clownEn110
-afficherGrille(clownEn110)
-jeuDeLaVie(clownEn110, 110 )
 
-l2
-
-candidates(l2)
-naissances(l2)
-
-nbVivanteParmiVoisines(0, 1, l2)
-
-survivantes(l2)
-survivantes(chainesToGrille(l))
-survivantes(chainesToGrille(liste))
-
-
-afficherGrille(l2 )
-afficherGrille(candidates(l2))
-
-
+afficherGrille(voisines4(0,0))
 
 //ici c'est pour les "vieux" tests
 
@@ -55,8 +37,15 @@ survivantes(l2)
 survivantes(chainesToGrille(l))
 survivantes(chainesToGrille(liste))
 
+//exo5
+candidates(l2)
+//exo 6
+naissances(l2)
 
-
+//exo 7
+clownEn110
+afficherGrille(clownEn110)
+jeuDeLaVie(clownEn110, 110 )
 
 
 
