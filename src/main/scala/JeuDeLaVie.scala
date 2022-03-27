@@ -266,4 +266,30 @@ object JeuDeLaVie {
   }
 
 
+  /*
+   * Question 11
+   */
+  def moteur(init:Grille, nb:Int,fVoisine:(Int, Int)=>Grille,  fNait:Int=>Boolean, fSurvit:Int=>Boolean):Unit = {
+    @tailrec
+    def aux(i:Int, g :Grille):Unit = {
+
+      val newGrille = retirerDoublons(concatener(naissancesG(g, fVoisine, fNait),survivantesG(g, fVoisine, fSurvit)))
+
+      //debuggage a retirer plus tard
+      print("------------------- " + i + "/" + nb + "-------------------\n")
+      //print("Depart : " + g +"\n")
+      //afficherGrille(g)
+      //print("Naissance :" + naissances(g) +" \n")
+      //afficherGrille(naissances(g))
+      //print("Survivantes : " + survivantes(g) +" \n")
+      //afficherGrille(survivantes(g))
+      print("Total :" + newGrille +" \n")
+
+
+      afficherGrille(newGrille)
+      if (i < nb) aux(i+1, newGrille)
+    }
+    aux(1, init)
+  }
+
 }
