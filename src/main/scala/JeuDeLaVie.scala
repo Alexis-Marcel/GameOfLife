@@ -88,7 +88,9 @@ object JeuDeLaVie {
   /*
    * Question 3
    */
+  def estOOB(l:Int, c:Int) = l == Integer.MAX_VALUE || l == Integer.MIN_VALUE || c == Integer.MAX_VALUE || c == Integer.MIN_VALUE
   def voisines8(l:Int, c:Int):List[(Int, Int)] = {
+    if (estOOB(l,c)) throw new IndexOutOfBoundsException
     List((l-1, c-1),(l-1, c), (l-1, c+1), (l, c-1),(l, c+1), (l+1, c-1), (l+1, c), (l+1, c+1))
   }
 
@@ -219,6 +221,7 @@ object JeuDeLaVie {
    * Question 8
    */
   def voisines4(l:Int, c:Int):List[(Int, Int)] = {
+    if (estOOB(l,c)) throw new IndexOutOfBoundsException
     List((l-1, c), (l, c-1),(l, c+1), (l+1, c))
   }
 
@@ -301,6 +304,9 @@ object JeuDeLaVie {
   /*
    * Question 13
    */
-  def varianteAutomateDeFredkin(init:Grille, nb:Int):Unit = moteur(init, nb, (l, c)=>List((l-1, c-1), (l-1, c+1),(l+1, c-1), (l+1, c+1)), naitFredkin, survitFredkin)
+  def varianteAutomateDeFredkin(init:Grille, nb:Int):Unit = moteur(init, nb, (l, c)=>{
+    if (estOOB(l,c)) throw new IndexOutOfBoundsException
+    List((l-1, c-1), (l-1, c+1),(l+1, c-1), (l+1, c+1))
+  }, naitFredkin, survitFredkin)
 
 }
