@@ -56,29 +56,33 @@ object JeuDeLaVie {
    * Affiche la grille dans la console
    */
   def afficherGrille(g:Grille):Unit = {
-    val ((lmin, cmin), (lmax, cmax)) = coinMinMax(g)
-    def afficher(ligne:Int, colonne:Int, g:Grille):Unit = g match {
-      case _ if ligne > lmax =>
-      case v if colonne > cmax => {
-        print("\n")
-        afficher(ligne+1, cmin, v)
-      }
-      case t::q =>{
-        val (l, c) = t
-        if (ligne == l && colonne == c) {
-          print("X")
-          afficher(ligne, colonne+1, q)
-        } else {
-          print(" ")
-          afficher(ligne, colonne+1, t::q)
+    if (g.nonEmpty) {
+      val ((lmin, cmin), (lmax, cmax)) = coinMinMax(g)
+
+      def afficher(ligne: Int, colonne: Int, g: Grille): Unit = g match {
+        case _ if ligne > lmax =>
+        case v if colonne > cmax => {
+          print("\n")
+          afficher(ligne + 1, cmin, v)
+        }
+        case t :: q => {
+          val (l, c) = t
+          if (ligne == l && colonne == c) {
+            print("X")
+            afficher(ligne, colonne + 1, q)
+          } else {
+            print(" ")
+            afficher(ligne, colonne + 1, t :: q)
+          }
+        }
+        case Nil => {
+          print(" ");
+          afficher(ligne, colonne + 1, Nil)
         }
       }
-      case Nil => {
-        print(" ");
-        afficher(ligne, colonne+1, Nil)
-      }
+
+      afficher(lmin, cmin, g)
     }
-    afficher(lmin, cmin, g)
   }
 
   /*
@@ -192,17 +196,17 @@ object JeuDeLaVie {
    */
   def jeuDeLaVie(init:Grille, nb:Int):Unit = {
     def aux(i:Int, g :Grille):Unit = {
-      val newGrille = retirerDoublons(naissances(g) ++ survivantes(g))
+      val newGrille = retirerDoublons(concatener(naissances(g), survivantes(g)))
 
       //debuggage a retirer plus tard
       print("------------------- " + i + "/" + nb + "-------------------\n")
-      print("Depart : " + g +"\n")
-      afficherGrille(g)
-      print("Naissance :" + naissances(g) +" \n")
-      afficherGrille(naissances(g))
-      print("Survivantes : " + survivantes(g) +" \n")
-      afficherGrille(survivantes(g))
-      print("Total :" + newGrille +" \n")
+      //print("Depart : " + g +"\n")
+      //afficherGrille(g)
+      //print("Naissance :" + naissances(g) +" \n")
+      //afficherGrille(naissances(g))
+      //print("Survivantes : " + survivantes(g) +" \n")
+      //afficherGrille(survivantes(g))
+       print("Total :" + newGrille +" \n")
 
 
       afficherGrille(newGrille)
