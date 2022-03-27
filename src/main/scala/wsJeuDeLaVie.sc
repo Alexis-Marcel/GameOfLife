@@ -16,6 +16,10 @@ candidates(l2).length
 val listeCligno = List((0,-1), (0,0), (0,1))
 val clownEn110 = List((-1,-1), (-1,0), (-1 ,1), (0,-1), (0 , 1),(1,-1), (1, 1) )
 
+val autoFredkin = List((0, 0))
+afficherGrille(autoFredkin)
+
+automateDeFredkin(autoFredkin, 5)
 
 afficherGrille(voisines4(0,0))
 afficherGrille(((l:Int, c:Int)=>List((l-1, c-1), (l-1, c+1),(l+1, c-1), (l+1, c+1)))(0,0))

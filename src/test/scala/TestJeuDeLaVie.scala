@@ -246,5 +246,44 @@ class TestJeuDeLaVie extends FunSuite {
     assert(res2.length <= candidatesG(l,voisines4).length)
   }
 
+/*
+Pour tester jeuDelaVie et la version de la question 7 de jeuDeLaVie on utilise :
+val listeCligno = List((0,-1), (0,0), (0,1))
+qui doit osciller entre une ligne horizontale et une verticale
+et
+val clownEn110 = List((-1,-1), (-1,0), (-1 ,1), (0,-1), (0 , 1),(1,-1), (1, 1) )
+qui doit avoir ceci au bout de la 110 étape de vie :
+"""
+         XX    XXX    XX
+         XX           XX
+ XX                           XX
+X X                           X X
+ X                             X
+          XXX       XXX
+         X  X       X  X
+         X   X     X   X
+        XX X X     X X XX
+        XX XX       XX XX
+  XXX    XXX         XXX    XXX
+ X   X                     X   X
+X     X                   X     X
+X     X      XX   XX      X     X
+X     X     XX     XX     X     X
+ X   X    X  X     X  X    X   X
+  XXX      XX       XX      XXX
+              X   X
+               X X
+         XXXX X   X XXXX
+        X    X     X    X
+        X  X         X  X
+         XX           XX
+"""
+
+Pour l'automate de frenkin on a regardé l'etoilage de cet initialisation :
+val autoFredkin = List((0, 0))
+
+
+
+ */
 
 }
