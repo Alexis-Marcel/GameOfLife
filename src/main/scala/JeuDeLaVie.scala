@@ -193,7 +193,7 @@ object JeuDeLaVie {
   /*
    * Question 7
    */
-  def jeuDeLaVie(init:Grille, nb:Int):Unit = {
+  def jeuDeLaVieQuestion7(init:Grille, nb:Int):Unit = {
     def aux(i:Int, g :Grille):Unit = {
 
       val newGrille = retirerDoublons(concatener(naissances(g),survivantes(g)))
@@ -291,5 +291,11 @@ object JeuDeLaVie {
     }
     aux(1, init)
   }
+
+  /*
+   * Question  12
+   */
+  def jeuDeLaVie(init:Grille, nb:Int):Unit = moteur(init, nb, voisines8, naitJDLV, survitJDLV)
+  def automateDeFredkin(init:Grille, nb:Int):Unit = moteur(init, nb, voisines4, naitFredkin, survitFredkin)
 
 }
