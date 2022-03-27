@@ -45,6 +45,29 @@ class TestJeuDeLaVie extends FunSuite {
     val res = coinMinMax(liste)
     assert(res === exp)
   }
-  
+
+  /*
+   * Question 3
+  */
+
+  test("voisines8.normal") {
+    val exp2 = List((-1,-1), (-1,0), (-1,1), (0,-1), (0,1), (1,-1), (1,0), (1,1))
+    val res2 = voisines8( 0 , 0)
+    assert(res2 === exp2)
+    assert(res2.length == 8)
+
+    val exp  = List((-7,-2), (-7,-1), (-7,0), (-6,-2), (-6,0), (-5,-2), (-5,-1), (-5,0))
+    val res = voisines8( -6 , -1)
+    assert(res === exp)
+    assert(res.length == 8)
+  }
+
+  test("voisines8.grandOuPetit") {
+    intercept[IndexOutOfBoundsException](voisines8( Integer.MAX_VALUE , 0))
+    intercept[IndexOutOfBoundsException](voisines8( 0 , Integer.MAX_VALUE))
+    intercept[IndexOutOfBoundsException](voisines8( Integer.MIN_VALUE , 0))
+    intercept[IndexOutOfBoundsException](voisines8( 0, Integer.MIN_VALUE ))
+    intercept[IndexOutOfBoundsException](voisines8( Integer.MAX_VALUE, Integer.MIN_VALUE ))
+  }
 
 }
