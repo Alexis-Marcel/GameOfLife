@@ -230,5 +230,39 @@ object JeuDeLaVie {
   def naitFredkin(nbVoisines:Int):Boolean = (nbVoisines % 2 != 0)
   def survitFredkin(nbVoisines:Int):Boolean = (nbVoisines % 2 != 0)
 
+  /*
+   * Question 10
+   */
+  def survivantesG(g:Grille, fVoisine:(Int, Int)=>Grille, fSurvit:Int=>Boolean): Grille = {
+    def aux(grille: Grille):Grille = grille match {
+      case t::q => {
+        val (l, c) = t
+        if ( fSurvit(nbVivanteParmiVoisines(g,fVoisine(l, c)) ) ) t::aux(q)
+        else aux(q)
+      }
+      case Nil => Nil
+    }
+    aux(g)
+  }
+
+  def candidatesG(g:Grille, fVoisine:(Int, Int)=>Grille):Grille = {
+    def aux(grille: Grille):Grille = grille match {
+      case t::q => {
+        val (l, c) = t
+        concatener(fVoisine(l,c).filter(cel => estMorte(cel,g)),aux(q))
+      }
+      case Nil => Nil
+    }
+    aux(g)
+  }
+
+  def naissancesG(g:Grille, fVoisine:(Int, Int)=>Grille, fNait:Int=>Boolean):Grille = {
+    def aux(grille:Grille):Grille = grille match {
+      case (l, c)::q => if (fNait( nbVivanteParmiVoisines(g,fVoisine(l, c)) )) (l, c)::aux(q) else aux(q)
+      case Nil => Nil
+    }
+    retirerDoublons( aux(candidates(g)) );
+  }
+
 
 }
