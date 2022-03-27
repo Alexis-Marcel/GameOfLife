@@ -230,7 +230,7 @@ object JeuDeLaVie {
    * Question 9
    */
   def naitJDLV(nbVoisines:Int):Boolean = nbVoisines==3
-  def survitJDLV(nbVoisines:Int):Boolean = 2 == nbVoisines && nbVoisines == 3
+  def survitJDLV(nbVoisines:Int):Boolean = 2 == nbVoisines || nbVoisines == 3
 
   def naitFredkin(nbVoisines:Int):Boolean = nbVoisines % 2 != 0
   def survitFredkin(nbVoisines:Int):Boolean = nbVoisines % 2 != 0

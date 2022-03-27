@@ -87,13 +87,14 @@ class TestJeuDeLaVie extends FunSuite {
    * Question 5
   */
 
-  test("candidate.normal") {
+  test("candidates.normal") {
     val l = List((-1,1),(0,1), (1,2), (2,0), (2,1))
     val res = candidates(l)
 
     val exp = List((-2,0),(-2,1),(-2,2),(-1,0),(-1,2),(0,0),(0,2),(0,3),(1,-1),(1,0),(1,1),(1,3),(2,-1),(2,2),(2,3),(3,-1),(3,0),(3,1),(3,2))
 
     assert(res === exp)
+    assert(res.length <= l.length*8)
   }
 
   /*
@@ -184,6 +185,65 @@ class TestJeuDeLaVie extends FunSuite {
     assert(naitFredkin(2) == survitFredkin(2))
     assert(naitFredkin(3) == survitFredkin(3))
 
+  }
+
+  /*
+   * Question 10
+   */
+
+  test("survivantesG.normal") {
+    val l = List((-1,1),(0,1), (1,2), (2,0), (2,1))
+
+
+    //Test JDLV
+    val res = survivantesG(l,voisines8,survitJDLV)
+    val exp = List((0,1), (1,2), (2,1))
+    assert(res === exp)
+    //il ne peut pas y avoir plus de survivantes que de cellules vivantes initialement
+    assert(res.length <= l.length)
+
+    //Test Fredkin
+    val res2 = survivantesG(l,voisines4,survitFredkin)
+    val exp2 = List((-1,1),(0,1), (2,0), (2,1))
+    assert(res2 === exp2)
+    //il ne peut pas y avoir plus de survivantes que de cellules vivantes initialement
+    assert(res2.length <= l.length)
+
+
+  }
+
+  test("candidatesG.normal") {
+    val l = List((-1,1),(0,1), (1,2), (2,0), (2,1))
+
+    //Test JDLV
+    val res = candidatesG(l,voisines8)
+    val exp = List((-2,0),(-2,1),(-2,2),(-1,0),(-1,2),(0,0),(0,2),(0,3),(1,-1),(1,0),(1,1),(1,3),(2,-1),(2,2),(2,3),(3,-1),(3,0),(3,1),(3,2))
+    assert(res === exp)
+    assert(res.length <= l.length*8)
+
+    //Test Fredkin
+    val res2 = candidatesG(l,voisines4)
+    val exp2 = List((-2,1),(-1,0),(-1,2),(0,0),(0,2),(1,0),(1,1),(1,3),(2,-1),(2,2),(3,0),(3,1))
+    assert(res2 === exp2)
+    assert(res2.length <= l.length*4)
+  }
+
+  test("naissancesG.normal") {
+    val l = List((-1,1),(0,1), (1,2), (2,0), (2,1))
+
+    //Test JDLV
+    val res = naissancesG(l,voisines8,naitJDLV)
+    val exp = List((0,2),(1,0))
+    assert(res === exp)
+    //il ne peut pas y avoir plus de naissances que de candiates
+    assert(res.length <= candidatesG(l,voisines8).length)
+
+    //Test Fredkin
+    val res2 = naissancesG(l,voisines4,naitFredkin)
+    val exp2 = List((-2,1),(-1,0),(-1,2),(0,0),(1,0),(1,1),(1,3),(2,-1),(3,0),(3,1))
+    assert(res2 === exp2)
+    //il ne peut pas y avoir plus de naissances que de candiates
+    assert(res2.length <= candidatesG(l,voisines4).length)
   }
 
 
