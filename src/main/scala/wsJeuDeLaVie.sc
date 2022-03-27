@@ -49,4 +49,4 @@ naissances(l2)
 //exo 7
 clownEn110
 afficherGrille(clownEn110)
-jeuDeLaVie(clownEn110, 110 )
+jeuDeLaVieQuestion7(clownEn110, 110 )
