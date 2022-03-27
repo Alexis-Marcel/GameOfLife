@@ -35,7 +35,7 @@ voisines8( 2 , 4).length
 voisines8( 2 , -1)
 
 //exo 4
-nbVivanteParmiVoisines(0, 1, l2)
+nbVivanteParmiVoisines(voisines8(0, 1),l2)
 
 survivantes(l2)
 survivantes(chainesToGrille(l))
